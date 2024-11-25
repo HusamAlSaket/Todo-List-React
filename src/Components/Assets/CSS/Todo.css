@@ -1,0 +1,156 @@
+/* Ultimate Professional Todo List CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary-color: #4A90E2;
+  --secondary-color: #FF6B35;
+  --background-color: #F7F9FC;
+  --text-color: #2C3E50;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+.todo {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.05), 
+    0 5px 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  transform: perspective(1000px);
+  transition: all var(--transition-speed) ease;
+  height:600px;
+}
+
+.todo:hover {
+  transform: perspective(1000px) translateZ(20px);
+  box-shadow: 
+    0 20px 45px rgba(0,0,0,0.08), 
+    0 10px 25px rgba(0,0,0,0.08);
+}
+
+.todo-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.todo-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255,255,255,0.1);
+  transform: rotate(-45deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: rotate(-45deg) translateX(-100%); }
+  100% { transform: rotate(-45deg) translateX(100%); }
+}
+
+.todo-add {
+  display: flex;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-bottom: 1px solid #e9ecef;
+}
+
+.todo-input {
+  flex-grow: 1;
+  padding: 15px;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  font-size: 16px;
+  background-color: white;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.todo-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 
+    0 4px 6px rgba(0,0,0,0.1), 
+    0 0 0 3px rgba(74,144,226,0.2);
+}
+
+.todo-add-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 15px 25px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.todo-add-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.todo-list {
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+/* Todo Items Styling */
+.todo-items {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all var(--transition-speed) ease;
+}
+
+.todo-items:hover {
+  background-color: #f9f9f9;
+  transform: translateX(10px);
+  box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+}
+
+.todo-items-text {
+  flex-grow: 1;
+  margin-left: 15px;
+  color: var(--text-color);
+  font-size: 16px;
+  transition: color var(--transition-speed) ease;
+}
+
+.todo-items-crossed {
+  text-decoration: line-through;
+  color: #6c757d;
+  opacity: 0.7;
+}
